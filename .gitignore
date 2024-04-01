@@ -163,3 +163,5 @@ cython_debug/
 *.wav
 *.m4a
 *.mp3
+aoai-with-speech-service.py
+database.json

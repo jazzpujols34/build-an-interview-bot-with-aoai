@@ -1,8 +1,7 @@
 from fastapi import FastAPI, UploadFile
-from dotenv import load_dotenv
 from openai import AzureOpenAI
 from fastapi.responses import StreamingResponse
-import uvicorn
+from dotenv import load_dotenv
 import requests
 import json
 import os
@@ -17,8 +16,8 @@ client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
     api_version="2024-02-01"
 )
-
 deployment_id = "whisper" 
+
 
 app = FastAPI()
 
@@ -26,19 +25,18 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
+
 # 1. Send in audio, and have it transcribed
-
-
 @app.post("/talk")
 async def post_audio(file: UploadFile):
     user_message = transcribe_audio(file)
     chat_response = get_chat_response(user_message)
     audio_output = text_to_speech(chat_response)
 
-    def iterfile():  # 
+    def iterfile():
         yield audio_output  
 
-    return StreamingResponse(iterfile(), media_type="audio/mpeg")
+    return StreamingResponse(iterfile(), media_type="audio/mp3")
 
 
 def transcribe_audio(file):
@@ -49,10 +47,8 @@ def transcribe_audio(file):
 )
 
     # Send the POST request
-    
     transcript = result.text
     print(transcript)
-    print(type(transcript))
     return transcript
 
 # 2. Send the transcribe to chatgpt and get a response
@@ -122,13 +118,13 @@ def text_to_speech(text):
         }
 
         body = {
-            "model_id": "eleven_monolingual_v1 ",
+            "model_id": "eleven_monolingual_v1",
             "text": text,
             "voice_settings": {
-                "similarity_boost": 123,    
-                "stability": 123,
-                # "style": 123,
-                # "use_speaker_boost": True
+                "similarity_boost": 0.5,    
+                "stability": 0.5,
+                "style": 0.5,
+                "use_speaker_boost": True
             }
         }
 
@@ -137,7 +133,7 @@ def text_to_speech(text):
             if response.status_code == 200:
                 return response.content
             else:
-                print("Something went wrong.")
+                print("Something went wrong. Status code:", response.status_code)
+                print("Error details:", response.text)
         except Exception as e :
             print(e)
-        
