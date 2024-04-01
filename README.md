@@ -33,8 +33,4 @@ Send a POST request to the `/talk` endpoint with an audio file. The bot will tra
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/yourusername/yourrepository/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/yourusername/yourrepository/blob/main/LICENSE.md) file for details
+Contributions are welcomed! Please contact me for more information.
