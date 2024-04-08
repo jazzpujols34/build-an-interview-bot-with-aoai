@@ -35,25 +35,35 @@ cd backend_recorder
 
  **Install dependencies**
 
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 
  **Start the FastAPI server**
 
-```uvicorn main:app --reload```
+```bash
+uvicorn main:app --reload
+```
 
 ### Frontend Setup
 
 **Navigate to the frontend directory**
 
-```cd frontend_recorder```
+```bash
+cd frontend_recorder
+```
 
 **Install NPM packages**
 
-```npm install```
+```bash
+npm install
+```
 
 **Start the React application**
 
-```npm start```
+```
+npm start
+```
 
 ## Environment Variables
 
