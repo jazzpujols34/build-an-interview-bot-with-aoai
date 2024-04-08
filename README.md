@@ -29,7 +29,9 @@ The Interview Bot application simulates a mock interview scenario, allowing user
 
  **Navigate to the backend directory**
 
-```cd backend_recorder```
+```bash
+cd backend_recorder
+```
 
  **Install dependencies**
 
