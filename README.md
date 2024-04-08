@@ -18,38 +18,40 @@ The Interview Bot application simulates a mock interview scenario, allowing user
 ### Prerequisites
 
 - Python 3.10
+
 - An Azure OpenAI account
+
 - An ElevenLabs account
 
 ## Installation and Setup
 
 ### Backend Setup
 
-# Navigate to the backend directory
+ **Navigate to the backend directory**
 
-`cd backend_recorder`
+```cd backend_recorder```
 
-# Install dependencies
+ **Install dependencies**
 
-`pip install -r requirements.txt`
+```pip install -r requirements.txt```
 
-# Start the FastAPI server
+ **Start the FastAPI server**
 
-`uvicorn main:app --reload`
+```uvicorn main:app --reload```
 
 ### Frontend Setup
 
-# Navigate to the frontend directory
+**Navigate to the frontend directory**
 
-`cd frontend_recorder`
+```cd frontend_recorder```
 
-# Install NPM packages
+**Install NPM packages**
 
-`npm install`
+```npm install```
 
-# Start the React application
+**Start the React application**
 
-`npm start`
+```npm start```
 
 ## Environment Variables
 
@@ -57,11 +59,15 @@ Make sure to set up your .env file in the backend directory with the following v
 
 ### .env file content
 
-`ELEVENLABS_KEY=your_elevenlabs_api_key
-AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
-AZURE_OPENAI_API_KEY=your_azure_openai_api_key`
+```
+ELEVENLABS_KEY=your_elevenlabs_api_key
 
-Replace your_elevenlabs_api_key, your_azure_openai_endpoint, and your_azure_openai_api_key with your actual API keys and endpoint URL.
+AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
+
+AZURE_OPENAI_API_KEY=your_azure_openai_api_key
+```
+
+Replace `your_elevenlabs_api_key`, `your_azure_openai_endpoint`, and `your_azure_openai_api_key` with your actual API keys and endpoint URL.
 
 ## Usage Instructions
 
