@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile
-from openai import AzureOpenAI
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 import requests
 import json
@@ -21,6 +22,19 @@ deployment_id = "whisper"
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -36,11 +50,19 @@ async def post_audio(file: UploadFile):
     def iterfile():
         yield audio_output  
 
-    return StreamingResponse(iterfile(), media_type="audio/mp3")
+    return StreamingResponse(iterfile(), media_type="application/octet-stream")#audio/mp3
 
+
+@app.get("/clear")
+async def clear_history():
+    file = 'database.json'
+    with open(file, 'w') as f:
+        json.dump("", f)
+    return {"message": "Chat history has been cleared"}
 
 def transcribe_audio(file):
-    # 設定為我們Model的 URL
+    with open(file.filename, "wb") as buffer:
+        buffer.write(file.file.read())
     result = client.audio.transcriptions.create(
 	file=open(file.filename, "rb"),            #audio_test_file
 	model=deployment_id
@@ -50,6 +72,7 @@ def transcribe_audio(file):
     transcript = result.text
     print(transcript)
     return transcript
+
 
 # 2. Send the transcribe to chatgpt and get a response
 def get_chat_response(user_message):

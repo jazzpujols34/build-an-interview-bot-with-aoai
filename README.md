@@ -1,10 +1,19 @@
 # Generative AI Engineer Interview Bot
 
-This project is a chatbot that simulates an interview for a Generative AI Engineer position. It uses Azure OpenAI's GPT-4 to generate responses to user messages and transcribes audio input from the user.
+The Interview Bot application simulates a mock interview scenario, allowing users to interact with an AI interviewer through voice responses. It leverages 
+ Azure OpenAI for natural language processing, ElevenLabs for text-to-speech conversion, FastAPI for the backend, and React for the frontend.
 
-## Getting Started
+## Key Technologies
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+- Azure OpenAI: Utilized for transcribing audio inputs and generating conversational responses, enhancing the AI's understanding and interaction capabilities.
+
+- ElevenLabs API: Converts text responses from the AI into audible speech, providing a seamless conversational experience.
+
+- FastAPI: A modern, fast web framework for building APIs.
+
+- React: A JavaScript library for building user interfaces, enabling dynamic and responsive web applications.
+
+- Ant Design (AntD): A comprehensive React UI library that contains a set of high-quality components and demos for building rich, interactive user interfaces.
 
 ### Prerequisites
 
@@ -12,25 +21,53 @@ These instructions will get you a copy of the project up and running on your loc
 - An Azure OpenAI account
 - An ElevenLabs account
 
-### Installing
+## Installation and Setup
 
-1. Clone the repository:
-	```
-	git clone https://github.com/jazzpujols34/build-an-interview-bot-with-aoai.git
-	```
-2. Install the required packages:
-	```
-	pip install -r requirements.txt
-	```
-3. Run the server:
-	```
-	uvicorn main:app --reload
-	```
+### Backend Setup
 
-## Usage
+# Navigate to the backend directory
 
-Send a POST request to the `/talk` endpoint with an audio file. The bot will transcribe the audio, generate a response, convert the response to speech, and return the audio response.
+`cd backend_recorder`
 
-## Contributing
+# Install dependencies
 
-Contributions are welcomed! Please contact me for more information.
+`pip install -r requirements.txt`
+
+# Start the FastAPI server
+
+`uvicorn main:app --reload`
+
+### Frontend Setup
+
+# Navigate to the frontend directory
+
+`cd frontend_recorder`
+
+# Install NPM packages
+
+`npm install`
+
+# Start the React application
+
+`npm start`
+
+## Environment Variables
+
+Make sure to set up your .env file in the backend directory with the following variables:
+
+### .env file content
+
+`ELEVENLABS_KEY=your_elevenlabs_api_key
+AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
+AZURE_OPENAI_API_KEY=your_azure_openai_api_key`
+
+Replace your_elevenlabs_api_key, your_azure_openai_endpoint, and your_azure_openai_api_key with your actual API keys and endpoint URL.
+
+## Usage Instructions
+
+
+- Record: Click the microphone button to start recording your response.
+
+- Stop: Click the stop button to end the recording. The application will process your input and provide a response.
+
+- Clear History: Click the "Clear History" button to reset your chat history.

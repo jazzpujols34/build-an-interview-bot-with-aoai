@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.record-button:hover,
+.stop-button:hover,
+.clear-button:hover {
+  color: blue !important;
+  border-color: blue !important;
+}
